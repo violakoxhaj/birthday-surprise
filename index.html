@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #fff3b0, #d7f9ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #333;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      max-width: 650px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 28px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      animation: popIn 0.5s ease;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    img, video {
+      max-width: 100%;
+      border-radius: 20px;
+      margin: 20px 0;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    button {
+      border: none;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: #ff6fae;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.06);
+      background: #ff4d9d;
+    }
+
+    .small-note {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 15px;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.94);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .confetti {
+      position: fixed;
+      top: -10px;
+      font-size: 24px;
+      animation: fall 3s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <h1>🎂 A Birthday Surprise</h1>
+    <p>Before your birthday message appears, you have to pass a very serious friendship quiz...</p>
+    <div class="buttons">
+      <button onclick="showStep(0)">I accept the challenge 💖</button>
+    </div>
+  </div>
+
+  <script>
+    const steps = [
+      {
+        question: "Question 1: Do you know how loved you are today?",
+        text: "Careful... this one has only one correct answer.",
+        media: "photos/photo1.jpg",
+        answers: [
+          { label: "Yes, obviously 😌", next: 1 },
+          { label: "Maybe?", next: 1 }
+        ]
+      },
+      {
+        question: "Correct answer: VERY loved 💕",
+        text: "Memory unlocked: this moment always makes me smile.",
+        media: "photos/photo2.jpg",
+        answers: [
+          { label: "Awww, next memory 🥹", next: 2 },
+          { label: "I want more love", next: 2 }
+        ]
+      },
+      {
+        question: "Question 2: What is your birthday superpower?",
+        text: "Choose wisely. Your birthday destiny depends on it.",
+        media: "photos/photo3.jpg",
+        answers: [
+          { label: "Making everyone laugh 😂", next: 3 },
+          { label: "Being iconic ✨", next: 3 },
+          { label: "Eating cake professionally 🍰", next: 3 }
+        ]
+      },
+      {
+        question: "Memory unlocked: pure iconic energy ✨",
+        text: "This photo/video deserves a permanent place in the friendship museum.",
+        media: "photos/photo4.jpg",
+        answers: [
+          { label: "Open the final birthday message 🎁", next: 4 }
+        ]
+      },
+      {
+        question: "Happy Birthday, my beautiful friend 🎉",
+        text: "I hope this year brings you love, joy, peace, laughter, beautiful surprises, and everything your heart has been waiting for. I am so grateful for you and all the memories we have shared. Here’s to many more adventures, deep talks, silly moments, and unforgettable memories together. I love you! 💖",
+        media: "photos/final-photo.jpg",
+        answers: [
+          { label: "Replay from the beginning 🔁", next: "start" }
+        ]
+      }
+    ];
+
+    function showStep(index) {
+      if (index === "start") {
+        location.reload();
+        return;
+      }
+
+      const step = steps[index];
+      const card = document.getElementById("card");
+
+      let mediaHTML = "";
+      if (step.media.endsWith(".mp4")) {
+        mediaHTML = `<video controls><source src="${step.media}" type="video/mp4">Your browser does not support video.</video>`;
+      } else {
+        mediaHTML = `<img src="${step.media}" alt="Birthday memory" />`;
+      }
+
+      card.innerHTML = `
+        <h1>${step.question}</h1>
+        <p>${step.text}</p>
+        ${mediaHTML}
+        <div class="buttons">
+          ${step.answers.map(answer => `
+            <button onclick="showStep('${answer.next}')">${answer.label}</button>
+          `).join("")}
+        </div>
+        <p class="small-note">Memory ${index + 1} of ${steps.length}</p>
+      `;
+
+      card.style.animation = "none";
+      setTimeout(() => {
+        card.style.animation = "popIn 0.5s ease";
+      }, 10);
+
+      launchConfetti();
+    }
+
+    function launchConfetti() {
+      const emojis = ["🎉", "💖", "✨", "🎂", "🥳", "💕"];
+      for (let i = 0; i < 20; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDuration = 2 + Math.random() * 2 + "s";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+          confetti.remove();
+        }, 4000);
+      }
+    }
+  </script>
+</body>
+</html>
