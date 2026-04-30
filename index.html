@@ -253,9 +253,11 @@ p {
         ${mediaHTML}
         <div class="buttons">
           ${step.answers.map(answer => `
-            <button onclick="showStep('${answer.next}')">${answer.label}</button>
-          `).join("")}
-        </div>
+            <button onclick="showStep(${JSON.stringify(answer.next)})">
+             ${answer.label}
+          </button>
+         `).join("")}
+       </div>
         <p class="small-note">Memory ${Number(index) + 1} of ${steps.length}</p>
       `;
 
