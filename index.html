@@ -40,9 +40,11 @@
 
     img, video {
       max-width: 100%;
+      max-height: 520px;
       border-radius: 20px;
       margin: 20px 0;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      object-fit: contain;
     }
 
     .buttons {
@@ -76,14 +78,8 @@
     }
 
     @keyframes popIn {
-      from {
-        opacity: 0;
-        transform: scale(0.94);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      from { opacity: 0; transform: scale(0.94); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .confetti {
@@ -95,10 +91,7 @@
     }
 
     @keyframes fall {
-      to {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
+      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
@@ -116,7 +109,7 @@
       {
         question: "Question 1: Do you know how loved you are today?",
         text: "Careful... this one has only one correct answer.",
-        media: "photos/photo1.jpg",
+        media: "photos/happy.jpg",
         answers: [
           { label: "Yes, obviously 😌", next: 1 },
           { label: "Maybe?", next: 1 }
@@ -125,34 +118,97 @@
       {
         question: "Correct answer: VERY loved 💕",
         text: "Memory unlocked: this moment always makes me smile.",
-        media: "photos/photo2.jpg",
+        media: "photos/soulsisters.jpg",
         answers: [
           { label: "Awww, next memory 🥹", next: 2 },
           { label: "I want more love", next: 2 }
         ]
       },
       {
-        question: "Question 2: What is your birthday superpower?",
+        question: "Question 2: What is your superpower?",
         text: "Choose wisely. Your birthday destiny depends on it.",
-        media: "photos/photo3.jpg",
+        media: "photos/colorful.jpg",
         answers: [
           { label: "Making everyone laugh 😂", next: 3 },
           { label: "Being iconic ✨", next: 3 },
-          { label: "Eating cake professionally 🍰", next: 3 }
+          { label: "Shinning bright 🍰", next: 3 }
         ]
       },
       {
         question: "Memory unlocked: pure iconic energy ✨",
-        text: "This photo/video deserves a permanent place in the friendship museum.",
-        media: "photos/photo4.jpg",
+        text: "This photo deserves a permanent place in the friendship museum.",
+        media: "photos/sisterly.jpg",
         answers: [
-          { label: "Open the final birthday message 🎁", next: 4 }
+          { label: "Unlock more memories 🔐", next: 4 }
         ]
       },
       {
-        question: "Happy Birthday, my beautiful friend 🎉",
-        text: "I hope this year brings you love, joy, peace, laughter, beautiful surprises, and everything your heart has been waiting for. I am so grateful for you and all the memories we have shared. Here’s to many more adventures, deep talks, silly moments, and unforgettable memories together. I love you! 💖",
-        media: "photos/final-photo.jpg",
+        question: "Question 3: What is our favorite activity?",
+        text: "There is technically no wrong answer, but one answer is very correct.",
+        media: "photos/karaoke.jpg",
+        answers: [
+          { label: "Long Car Rides", next: 5 },
+          { label: "Car Karaoke", next: 5 },
+          { label: "Car Karaoke and Long Car Rides", next: 5 }
+        ]
+      },
+      {
+        question: "Correct: Car Karaoke and Long Car Rides",
+        text: "Another memory unlocked because honestly... this one is unforgettable and where it all started.",
+        media: "photos/soulsisters.jpg",
+        answers: [
+          { label: "Next memory 🥹", next: 6 }
+        ]
+      },
+      {
+        question: "Memory unlocked 💖",
+        text: "From a little island walk...",
+        media: "photos/littleisland.jpg",
+        answers: [{ label: "Next 💕", next: 7 }]
+      },
+      { question: "Memory unlocked ✨", text: "to the epic Break Bar selfies", media: "photos/beerbar.jpg", answers: [{ label: "Next 💕", next: 8 }] },
+      { question: "Memory unlocked 🎈", text: "to celebrating special days of our lives", media: "photos/birthdays.jpg", answers: [{ label: "Next 💕", next: 9 }] },
+      { question: "Memory unlocked 🥳", text: "to celebrating New Years", media: "photos/celebrating.jpg", answers: [{ label: "Next 💕", next: 10 }] },
+      { question: "Memory unlocked 🌈", text: "to happy moments just because ", media: "photos/colorful.jpg", answers: [{ label: "Next 💕", next: 11 }] },
+      { question: "Memory unlocked 🎨", text: "to creating art", media: "photos/creating.jpg", answers: [{ label: "Next 💕", next: 12 }] },
+      { question: "Memory unlocked 💗", text: "to just being certified cuties, obviously", media: "photos/cuties.jpg", answers: [{ label: "Next 💕", next: 13 }] },
+      { question: "Memory unlocked 🎞️", text: "to being Day-1 energy forever", media: "photos/day1.gif", answers: [{ label: "Next 💕", next: 14 }] },
+      { question: "Memory unlocked 🏙️", text: "to fancy rooftops", media: "photos/fancyrooftop.jpg", answers: [{ label: "Next 💕", next: 15 }] },
+      { question: "Memory unlocked 🎡", text: "to festivals and adventures", media: "photos/festivals.jpg", answers: [{ label: "Next 💕", next: 16 }] },
+      { question: "Memory unlocked 🔥", text: "to fire-matching energy", media: "photos/firematch.jpg", answers: [{ label: "Next 💕", next: 17 }] },
+      { question: "Memory unlocked 🖤", text: "to Gatsby-level iconic", media: "photos/gatsby.jpg", answers: [{ label: "Next 💕", next: 18 }] },
+      { question: "Memory unlocked 🎶", text: "to goth concerts", media: "photos/gothconcerts.jpg", answers: [{ label: "Next 💕", next: 19 }] },
+      { question: "Memory unlocked 😊", text: "to just being us", media: "photos/happy.jpg", answers: [{ label: "Next 💕", next: 20 }] },
+      { question: "Memory unlocked 🏡", text: "to rooftops of NYC", media: "photos/home.jpg", answers: [{ label: "Next 💕", next: 21 }] },
+      { question: "Memory unlocked 🚗", text: "to long car rides, endless talks, and forever memories", media: "photos/longcarride.jpg", answers: [{ label: "Next 💕", next: 22 }] },
+      { question: "Memory unlocked 🌸", text: "to park selfies because why not?", media: "photos/parkselfie.jpg", answers: [{ label: "Next 💕", next: 23 }] },
+      { question: "Memory unlocked 🎱", text: "to playing pool and letting you win (or maybe the other way around)", media: "photos/playpool.jpg", answers: [{ label: "Next 💕", next: 24 }] },
+      { question: "Memory unlocked 🌃", text: "to attending events where we still ended up just enjoying our own conversations", media: "photos/rooftopevent.jpg", answers: [{ label: "Next 💕", next: 25 }] },
+      { question: "Memory unlocked 🗽", text: "to making NYC memories together", media: "photos/rooftopnyc.jpg", answers: [{ label: "Next 💕", next: 26 }] },
+      { question: "Memory unlocked 👯‍♀️", text: "to always being by each others side like sisters", media: "photos/sisterly.jpg", answers: [{ label: "Next 💕", next: 27 }] },
+      { question: "Memory unlocked 🚶‍♀️", text: "to simple strolls that fill our hearts", media: "photos/strolling.jpg", answers: [{ label: "Next 💕", next: 28 }] },
+      { question: "Memory unlocked 🌿", text: "to perfect summer hikes and sunshine moments", media: "photos/summerhike.jpg", answers: [{ label: "Next 💕", next: 29 }] },
+      { question: "Memory unlocked 🎵", text: "to summer music and friendship magic", media: "photos/summermusic.jpg", answers: [{ label: "Next 💕", next: 30 }] },
+      {
+        question: "Final Question: How much do I love you?",
+        text: "This is the easiest question of the whole game.",
+        media: "photos/valentine.jpg",
+        answers: [
+          { label: "A lot", next: 31 },
+          { label: "Too much", next: 31 },
+          { label: "Pafund!!! ♾️", next: 31 }
+        ]
+      },
+      {
+        question: "Correct answer: PAFUND!!! 💖",
+        text: "One last memory before your birthday message.",
+        media: "photos/thanksgiving.jpg",
+        answers: [{ label: "Open the final birthday message 🎁", next: 32 }]
+      },
+      {
+        question: "Happy Birthday my Dearest Egla 🎉",
+        text: "I hope this year brings you love, joy, peace, laughter, beautiful surprises, and everything your heart has been waiting for. I am so grateful for you and all the memories we have shared and continue to share. Here’s to many more adventures, deep talks, silly moments, and unforgettable memories together. I love you! 💖",
+        media: "photos/sisterly.jpg",
         answers: [
           { label: "Replay from the beginning 🔁", next: "start" }
         ]
@@ -184,7 +240,7 @@
             <button onclick="showStep('${answer.next}')">${answer.label}</button>
           `).join("")}
         </div>
-        <p class="small-note">Memory ${index + 1} of ${steps.length}</p>
+        <p class="small-note">Memory ${Number(index) + 1} of ${steps.length}</p>
       `;
 
       card.style.animation = "none";
