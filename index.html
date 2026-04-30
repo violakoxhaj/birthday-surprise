@@ -33,10 +33,11 @@
       margin-bottom: 10px;
     }
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.5;
-    }
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  white-space: pre-line;
+}
 
     img, video {
       max-width: 100%;
@@ -205,9 +206,9 @@
         media: "thanksgiving.jpg",
         answers: [{ label: "Open the final birthday message 🎁", next: 32 }]
       },
-      {
-        question: "Happy Birthday my Dearest Egla 🎉",
-        text: "My dearest Egla 💖
+{
+  question: "Happy Birthday my Dearest Egla 🎉",
+  text: `My dearest Egla 💖
 I don’t even know where to begin, because the past four years of knowing you have truly been life-changing for me. You came into my life and brought with you so much light. Your thoughtfulness, your laughter, your warmth, your energy, your love.
 
 You are the kind of person who makes everything feel brighter and more meaningful just by being there. Every memory we’ve created from the big adventures to the smallest moments all mean so much to me and always make me smile.
@@ -222,12 +223,12 @@ This year, I wish for you everything your heart has been dreaming of: fulfillmen
 
 I love you more than words can ever express 💖
 
-Happy birthday, my sister, forever and always. I love you! 💖",
-        media: "sisterly.jpg",
-        answers: [
-          { label: "Replay from the beginning 🔁", next: "start" }
-        ]
-      }
+Happy birthday, my sister, forever and always. I love you! 💖`,
+  media: "sisterly.jpg",
+  answers: [
+    { label: "Replay from the beginning 🔁", next: "start" }
+  ]
+}
     ];
 
     function showStep(index) {
