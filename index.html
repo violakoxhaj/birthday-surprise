@@ -253,7 +253,7 @@ p {
         ${mediaHTML}
         <div class="buttons">
           ${step.answers.map(answer => `
-            <button onclick="showStep(${JSON.stringify(answer.next)})">
+            <button onclick="${answer.next === 'start' ? 'location.reload()' : `showStep(${answer.next})`}">
              ${answer.label}
           </button>
          `).join("")}
